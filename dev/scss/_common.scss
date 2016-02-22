@@ -1,0 +1,36 @@
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+
+body {
+	background-color: #f4f4f4;
+
+}
+
+.wrapper {
+	min-height: 100%;
+	min-width: 1256px;
+	position: relative;
+}
+
+ul, li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+
+a {
+	text-decoration: none;
+}
+
+.container {
+	height: 100%;
+	width:1100px;
+	margin: 0 auto;
+	position: relative;
+	}

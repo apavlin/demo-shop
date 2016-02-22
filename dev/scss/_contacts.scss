@@ -1,0 +1,85 @@
+@import "sprite";
+
+
+.contacts  {
+	background: white;
+	height: 77px;
+	border-bottom: 2px solid #ebedef;
+
+		&__socialsHeader {
+		@include vertical-center();
+		}
+		&__map-tel-box {
+		@include vertical-center();
+		right:0;
+		}
+}
+
+
+.socialsSmall {
+	font-size: 0;
+
+		&__item {
+			display: inline-block;
+			margin-left: 15px;
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+		&__link {
+			display: block;
+			&_fb{
+				@include sprite($fb-small);
+				&:hover {
+					@include sprite($fb-small-hover);
+				}
+			}
+			&_tw{
+				@include sprite($tw-small);
+				&:hover {
+					@include sprite($tw-small-hover);
+				}
+			}
+			&_vk{
+				@include sprite($vk-small);
+				&:hover {
+					@include sprite($vk-small-hover);
+				}
+			}
+		}
+}
+
+.map-tel-box {
+
+	&__item {
+	display: inline-block;
+	}
+
+	&__link {
+	color: black;
+	padding-left: 20px;
+	position: relative;
+
+		&_adress {
+			font-family: 'open_sansregular';
+			font-size: 14px;
+			margin-right: 60px;
+			&:before {
+			content:'';
+			left:0;
+			@include sprite($map-pin);
+			@include vertical-center();
+			}
+		}
+		&_telephone {
+			font-family: 'open_sanssemibold';
+			font-size: 18px;
+			&:before {
+			content:'';
+			left:0;
+			@include sprite($telephone);
+			@include vertical-center();
+			}
+		}
+	}
+}

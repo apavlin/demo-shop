@@ -1,0 +1,21 @@
+.contacts
+	.container.clearfix
+		.contacts__socialsHeader
+			+socialbuttons('socialsSmall',[{
+			  'class': 'fb',
+			  'href': 'https://www.facebook.com/',
+			  'text': 'facebook.com'
+			}, {
+			  'class': 'vk',
+			  'href': 'https://www.vk.com',
+			  'text': 'vkontakte.com'
+			}, {
+			  'class': 'tw',
+			  'href': 'https://www.twitter.com',
+			  'text': 'twitter.com'
+			}])
+		.contacts__map-tel-box.map-tel-box
+			.map-tel-box__item
+				a(href="https://goo.gl/maps/ggHPch3zzBq" class='map-tel-box__link map-tel-box__link_adress' target='_blank') ул. Маяковская 6, офис 17
+			.map-tel-box__item
+				a(href="tel://+7 (921) 123-12-13" class='map-tel-box__link map-tel-box__link_telephone') +7 (921) 123-12-13

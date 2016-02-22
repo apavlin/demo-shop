@@ -1,0 +1,23 @@
+{
+  "name": "ProjectName",
+  "authors": [
+    "apavlin <apavlin@yandex.ru>"
+  ],
+  "description": "ProjectName",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "2.2.0",
+    "normalize-scss": "~3.0.3",
+    "jquery-ui": "~1.11.4",
+    "jquery.columnizer": "~1.6.2",
+    "selectize": "~0.12.1"
+  }
+}

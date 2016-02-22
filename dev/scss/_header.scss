@@ -1,0 +1,73 @@
+
+.header {
+	position: relative;
+	height: 95px;
+
+		&__logo , &__search, &__buyersLinks {
+			@include vertical-center();
+			// display: inline-block;
+			// margin: auto 0;
+		}
+		&__logo {
+			left:0;
+		}
+		&__search {
+			left:295px;
+			box-sizing: border-box;
+		}
+		&__buyersLinks {
+			right: 0;
+		}
+}
+
+
+.hide-text {
+	font-size: 0;
+}
+
+
+.buyersLinks {
+	font-size: 0;
+		&__item {
+			display: inline-block;
+			margin-left: 32px;
+			&:first-child {
+				margin-left: 0px;
+			}
+		}
+		&__link {
+			font-family: 'open_sanssemibold';
+			font-size: 16px;
+			font-weight: 600;
+			color: black;
+			text-decoration: underline;
+			&:hover {
+				color: #f60;
+			}
+		}
+}
+
+
+.search__input {
+	padding-left: 10px;
+	line-height: 30px;
+	width: 287px;
+	border-radius: 3px;
+	border: 1px solid #dee1e4;
+	outline:none;
+}
+
+@include placeholder {font-family: 'open_sanslight'; color: #7f7f7f; font-size: 14px; line-height: 30px; padding-left:10px;}
+
+
+.search__button {
+	height: 34px;
+	min-width: 80px;
+	margin-left: -7px;
+	border: none;
+	background-color: #f60;
+	font-size: 16px;
+	font-family: 'open_sanssemibold';
+	color: white;
+	border-radius: 0 3px 3px 0;
+}

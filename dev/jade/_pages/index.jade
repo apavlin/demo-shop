@@ -1,0 +1,64 @@
+extends ../main
+
+block content
+    .content
+        .content__breadcrumbs
+            ul.breadcrumbs
+                li.breadcrumbs__item
+                    a(href="#").breadcrumbs__link Главная
+                li.breadcrumbs__item
+                    a(href="#").breadcrumbs__link.breadcrumbs__link_active Каталог
+        .content__pageTitle
+            h2.pagetitle Мобильные телефоны
+
+        aside.content__filters.filters
+            .filters__price-level-filter
+                ul.price-level-filter
+                    li.price-level-filter__item
+                        a(href="#").price-level-filter__link Флагманы
+                    li.price-level-filter__item
+                        a(href="#").price-level-filter__link.price-level-filter__link_active Бюджетная линейка
+            .filters__basic-filters
+                ul.basic-filters
+                    li.basic-filters__item
+                        a(href="#").basic-filters__link-trigger Наличие в магазинах
+                        ul.availability.accordeon__inner
+                            li.availability__item
+                                input(type="radio" id="allshops" name="availability" checked).radio-input
+                                label(for="allshops").radio-label Во всех магазинах
+                            li.availability__item
+                                input(type="radio" id="nearshop" name="availability").radio-input
+                                label(for="nearshop").radio-label В ближайшем ко мне магазине
+                    li.basic-filters__item
+                        a(href="#").basic-filters__link-trigger Бренды
+                        ul.accordeon__inner
+                            li.accordeon__inner-item
+                                +checkbox('brand', ['Lenovo', 'Apple', 'Samsung', 'Asus', 'Motorola'])
+                            li.accordeon__inner-item
+                                a(href="#").reset-filter Сбросить фильтр
+                    li.basic-filters__item
+                        .priceRange
+                            a(href="#").basic-filters__link-trigger Цена
+                            ul.priceRange__box.accordeon__inner
+                                li.accordeon__inner-item
+                                    span.priceRange__text от
+                                    input(type="text" id="priceRange__amount1").priceRange__field
+                                    span.priceRange__text до
+                                    input(type="text" id="priceRange__amount2").priceRange__field
+                                li.accordeon__inner-item
+                                    div.priceRange__slider
+                    li.basic-filters__item
+                        a(href="#").basic-filters__link-trigger Цвет
+                        ul.accordeon__inner
+                            li.accordeon__inner-item
+                                +colorFilter(['white', 'gray', 'black', 'blue', 'red', 'yellow', 'orange', 'green', 'skyblue', 'violet', 'pink', 'brown'])
+                    li.basic-filters__item
+                        a(href="#").basic-filters__link-trigger Операционная система
+                        ul.accordeon__inner
+                            li.accordeon__inner-item
+                                +checkbox('os', ['Android', 'iOS', 'Windows Mobile', 'Symbian', 'Custom'])
+                            li.accordeon__inner-item
+                                a(href="#").reset-filter Сбросить фильтр
+        main.content__main.main
+
+

@@ -1,0 +1,15 @@
+footer.footer
+    .container
+        .footer__box
+            .footer__logo.logo
+                .hide-text Cooltech Интернет магазин цифровой электроники
+                a(href="/").logo__link
+                    img(src="img/logo-white.png", alt="Cooltech logo").logo__img
+            .footer__socialsFooter
+                +socialbuttons('socialsBig',[{'class': 'fb', 'href': 'https://www.facebook.com/','text': 'facebook.com'}, {'class': 'vk', 'href': 'https://www.vk.com', 'text': 'vkontakte.com'}, {'class': 'tw', 'href': 'https://www.twitter.com', 'text': 'twitter.com'}
+                    ])
+            .footer__navFooter
+                +nav('navFooter', ['Планшеты', 'Мобильные телефоны', 'МР3 плееры', 'Персональные компьютеры', 'Ноутбуки', 'Аксессуары', 'Бытовая техника'])
+
+    .footer__copyright.copyright All rights reserved. 2016. No copy allowed.
+
