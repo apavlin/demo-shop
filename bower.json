@@ -18,6 +18,7 @@
     "normalize-scss": "~3.0.3",
     "jquery-ui": "~1.11.4",
     "jquery.columnizer": "~1.6.2",
-    "selectize": "~0.12.1"
+    "selectize": "~0.12.1",
+    "jquery-placeholder": "~2.3.1"
   }
 }

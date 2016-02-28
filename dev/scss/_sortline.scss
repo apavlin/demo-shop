@@ -1,7 +1,7 @@
 .content__sortline {
-  position: absolute;
-  right: 0;
-  top: 87px;
+  float: right;
+  margin-bottom: 20px;
+  margin-top: 86px;
 }
 
 .sortline {
@@ -15,12 +15,18 @@
   font-family: 'open_sansregular';
   color: #5d656c;
   @include clearfix;
+  margin-bottom: 20px ;
 }
 
 .catalog-view {
   float: right;
+}
+
+.catalog-view__wrap {
+  float: right;
   box-sizing:border-box;
   line-height: 53px;
+  width:265px;
 }
 
 .catalog-view__item {
@@ -43,49 +49,40 @@
 }
 
 .catalog-view__link_piclist:after {
-  content: '';
-  display: block;
-  @include sprite($view-pic-list);
-  @include absolute-center;
+content: '';
+display: block;
+@include sprite($view-pic-list);
+@include absolute-center;
+}
 
+.catalog-view__link_piclist:hover:after,
+.active.catalog-view__link_piclist:after {
+@include sprite($view-pic-active);
 }
 
 .catalog-view__link_table:after {
-  content: '';
-  display: block;
-  @include sprite($view-thumbnail);
-  @include absolute-center;
+content: '';
+display: block;
+@include sprite($view-thumbnail);
+@include absolute-center;
+}
+
+.catalog-view__link_table:hover:after,
+.active.catalog-view__link_table:after {
+@include sprite($view-thumbnail-active);
 }
 
 .catalog-view__link_list:after {
-  content: '';
-  display: block;
-  @include sprite($view-list);
-  @include absolute-center;
+content: '';
+display: block;
+@include sprite($view-list);
+@include absolute-center;
 }
 
-.catalog-view__link_piclist:hover:after {
-@include sprite($view-pic-active);
-}
-
-.catalog-view__link_piclist:active:after {
-@include sprite($view-pic-active);
-}
-.catalog-view__link_table:hover:after {
-@include sprite($view-thumbnail-active);
-}
-
-.catalog-view__link_table:active:after {
-@include sprite($view-thumbnail-active);
-}
-.catalog-view__link_list:hover:after {
+.catalog-view__link_list:hover:after,
+.active.catalog-view__link_list:after {
 @include sprite($view-list-active);
 }
-
-.catalog-view__link_list:active:after {
-@include sprite($view-list-active);
-}
-
 
 .sortby {
   padding-left: 20px;

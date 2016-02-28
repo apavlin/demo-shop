@@ -2,6 +2,7 @@ var gulp = require("gulp"),
     autoprefixer = require('gulp-autoprefixer'),
     browserSync = require('browser-sync'),
     concat = require('gulp-concat'),
+    eslint = require('gulp-eslint'),
     imagemin = require('gulp-imagemin'),
     jade = require('gulp-jade'),
     plumber = require('gulp-plumber'),
@@ -10,6 +11,8 @@ var gulp = require("gulp"),
     rename = require("gulp-rename"),
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
+    through = require('gulp-through'),
+    notify = require("gulp-notify"),
     spritesmith = require('gulp.spritesmith'),
     uglify = require('gulp-uglify');
 
@@ -31,7 +34,7 @@ var paths = {
 
     js: {
         location: [
-              'dev/js/*.js'
+              'dev/js/**/*.js'
         ],
         destination: 'prod/js'
     }
@@ -42,7 +45,7 @@ var paths = {
 gulp.task('jade-compile', function() {
   var YOUR_LOCALS = {};
   gulp.src(paths.jade.location)
-        .pipe(plumber())
+        .pipe(plumber({errorHandler: notify.onError("Jade: <%= error.message %>")}))
         .pipe(jade({
             pretty: true
         }))
@@ -52,51 +55,59 @@ gulp.task('jade-compile', function() {
 //SASS
 gulp.task('sass-compile', function() {
 	gulp.src(paths.scss.location)
-		.pipe(plumber())
+		.pipe(plumber({errorHandler: notify.onError("Sass: <%= error.message %>")}))
 		.pipe(sourcemaps.init())
 		.pipe(sass.sync().on('error', sass.logError))
-		.pipe(sass({outputStyle: 'expanded'}))
+		.pipe(sass({outputStyle: 'compressed'}))
 		.pipe(autoprefixer(['> 5%', 'last 5 versions', 'IE 9']))
 		.pipe(concat("main.min.css"))
-    .pipe(rigger())
 		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(paths.scss.destination));
+    .pipe(browserSync.stream())
+  	.pipe(gulp.dest(paths.scss.destination));
 	});
 
 // concat js
 gulp.task('concat-js', function() {
   return gulp.src(paths.js.location)
-    .pipe(plumber())
+    .pipe(plumber({errorHandler: notify.onError("JS: <%= error.message %>")}))
+    .pipe(eslint())
+    .pipe(eslint.format())
   	.pipe(sourcemaps.init())
   	.pipe(concat('main.min.js'))
     .pipe(rigger())
-    // .pipe(uglify())
+    .pipe(uglify())
   	.pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.js.destination));
 });
 
 // auto sprites
 gulp.task('sprite', function() {
-    var spriteData = gulp.src('dev/img/icons/*.png')
+    var spriteData = gulp.src('dev/img/icons/*.*')
         .pipe(spritesmith({
             imgName: 'sprite.png',
             cssName: 'sprite.scss',
             algorithm: 'top-down',
             padding:  5
         }));
-    spriteData.img.pipe(gulp.dest('prod/img/'));
+    spriteData.img.pipe(gulp.dest('dev/img/sprite/'));
     spriteData.css.pipe(gulp.dest('dev/scss/'));
 });
 
 // images minification
 gulp.task('img-min', function() {
-    return gulp.src('dev/img/*')
+    return gulp.src(['dev/img/**/*.*', '!dev/img/icons/*.*'])
         .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
             use: [pngquant()]
         }))
         .pipe(gulp.dest('prod/img'));
+});
+
+//Перенос шрифтов
+gulp.task('copy-fonts', function() {
+    gulp.src('dev/fonts/*.*')
+    .pipe(gulp.dest('prod/fonts'))
 });
 
 // Сервер
@@ -115,11 +126,8 @@ gulp.task('watch', function () {
   gulp.watch(paths.scss.location, ['sass-compile']);
   gulp.watch('dev/img/**/*', ['img-min']);
   gulp.watch('dev/js/**/*', ['concat-js']);
-  gulp.watch([
-    paths.jade.destination,
-    paths.js.destination,
-    paths.scss.destination
-  ]).on('change', browserSync.reload);
+  gulp.watch(['prod/*.html',  'prod/js/*.js']).on('change', browserSync.reload);
+  gulp.watch('dev/fonts/*.*', ['copy-fonts']);
 });
 
 // Задача по-умолчанию
@@ -127,6 +135,17 @@ gulp.task('default', [
   'jade-compile',
   'sass-compile',
   'concat-js',
+  'server',
+  'watch'
+]);
+
+// Сборка prod
+gulp.task('build', [
+  'jade-compile',
+  'sass-compile',
+  'concat-js',
+  'img-min',
+  'copy-fonts',
   'server',
   'watch'
 ]);

@@ -46,7 +46,7 @@
 }
 
 @mixin hide {
-  display: none!important; // for js
+  display: none!important;
 }
 
 @mixin vertical-center {
@@ -58,9 +58,23 @@
 @mixin absolute-center {
   margin: auto;
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: 0; left: 0;  bottom: 0; right: 0;
 }
 
+@mixin border-radius($radius) {
+-webkit-border-radius: $radius;
+-moz-border-radius: $radius;
+-ms-border-radius: $radius;
+-o-border-radius: $radius;
+border-radius: $radius;
+}
+
+
+@mixin box-sizing {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
 
 @mixin placeholder {
   ::-webkit-input-placeholder {@content}

@@ -25,3 +25,45 @@ mixin colorFilter(colors)
 			li.color__item
 				a(href="#" class="color__link #{item}")
 					span.color__text= item
+
+
+mixin productItem(content)
+	ul.table.product
+		each item in content
+			li.table.product__item
+				.table.item__image.image
+					.image__big
+						img(src="#{item.images.image1}", alt="#{item.name}").image__big-pic
+					ul.image__list
+						each value, key in item.images
+							li.image__item
+								a(href="#").image__item-link
+									img(src="#{value}", alt="#{value}").image__item-pic
+				.table.item__articul.articul
+					span.articul__text Артикул
+					span.articul__value #{item.articul}
+				.table.item__box
+					.table.item__name.name #{item.name}
+					ul.table.item__charact.charact
+						each value, key in item.charact
+							if (value)
+								li.charact__line
+									span.line__text_left #{key}
+									span.line__text_right #{value}
+							else
+								li.charact__line
+					.table.item__info.info.
+						#{item.info}
+					.table.item__ratio.ratio
+						ul.ratio__list
+							- for (var i = 0; i<5; i++)
+								if i < item.ratio
+									li.ratio__star.ratio__star-filled
+								else
+									li.ratio__star.ratio__star-unfilled
+						span.ratio__number #{item.ratio}
+				.table.item__price.price
+					span.price__value #{item.price}
+					span.price__ruble p
+				.table.item__presence.presence В наличии
+				button.table.item__addtobasket.addtobasket В корзину

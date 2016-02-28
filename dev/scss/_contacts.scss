@@ -59,17 +59,21 @@
 	color: black;
 	padding-left: 20px;
 	position: relative;
-
+	&:hover {
+	color: lighten(#333, 20%);
+	}
 		&_adress {
 			font-family: 'open_sansregular';
 			font-size: 14px;
 			margin-right: 60px;
+
 			&:before {
 			content:'';
 			left:0;
 			@include sprite($map-pin);
 			@include vertical-center();
 			}
+
 		}
 		&_telephone {
 			font-family: 'open_sanssemibold';

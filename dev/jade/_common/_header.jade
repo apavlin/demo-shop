@@ -4,13 +4,8 @@ header.header
             a(href="/").logo__link
                 img(src="img/logo-orange.png", alt="Cooltech logo").logo__img
                 h1.hide-text Cooltech Интернет магазин цифровой электроники
-        form.header__search.search
+        form(action="/" method="get").header__search.search
             input(type="text" placeholder="Что будем искать?").search__input
             button(type='submit').search__button Найти
         nav.header__buyersLinks.buyersLinks
             +nav('buyersLinks', ['Карта проезда','История заказов','Корзина'])
-
-
-
-
-

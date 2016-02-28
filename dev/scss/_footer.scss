@@ -7,6 +7,8 @@
 
 .footer {
 	position: relative;
+	box-sizing: border-box;
+	padding-top: 35px;
 	font-family: 'open_sansregular';
 	height: 220px;
 	margin-top: -220px;
@@ -15,7 +17,6 @@
 	background: url(../img/footer-bg_cr.jpg) repeat center;
 
 		&__box{
-		padding-top: 35px;
 		position: relative;
 		height: 140px;
 		}
@@ -88,6 +89,9 @@
 			line-height: 40px;
 			color: white;
 			text-decoration: underline;
+			&:hover {
+				color: #f60;
+			}
 		}
 		&__item {
 			padding-left: 20px;

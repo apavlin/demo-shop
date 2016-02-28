@@ -21,7 +21,7 @@ block content
             .filters__basic-filters
                 ul.basic-filters
                     li.basic-filters__item
-                        a(href="#").basic-filters__link-trigger Наличие в магазинах
+                        h3(href="#").basic-filters__link-trigger Наличие в магазинах
                         ul.availability.accordeon__inner
                             li.availability__item
                                 input(type="radio" id="allshops" name="availability" checked).radio-input
@@ -30,7 +30,7 @@ block content
                                 input(type="radio" id="nearshop" name="availability").radio-input
                                 label(for="nearshop").radio-label В ближайшем ко мне магазине
                     li.basic-filters__item
-                        a(href="#").basic-filters__link-trigger Бренды
+                        h3(href="#").basic-filters__link-trigger Бренды
                         ul.accordeon__inner
                             li.accordeon__inner-item
                                 +checkbox('brand', ['Lenovo', 'Apple', 'Samsung', 'Asus', 'Motorola'])
@@ -38,7 +38,7 @@ block content
                                 a(href="#").reset-filter Сбросить фильтр
                     li.basic-filters__item
                         .priceRange
-                            a(href="#").basic-filters__link-trigger Цена
+                            h3(href="#").basic-filters__link-trigger Цена
                             ul.priceRange__box.accordeon__inner
                                 li.accordeon__inner-item
                                     span.priceRange__text от
@@ -48,17 +48,28 @@ block content
                                 li.accordeon__inner-item
                                     div.priceRange__slider
                     li.basic-filters__item
-                        a(href="#").basic-filters__link-trigger Цвет
+                        h3(href="#").basic-filters__link-trigger Цвет
                         ul.accordeon__inner
                             li.accordeon__inner-item
                                 +colorFilter(['white', 'gray', 'black', 'blue', 'red', 'yellow', 'orange', 'green', 'skyblue', 'violet', 'pink', 'brown'])
                     li.basic-filters__item
-                        a(href="#").basic-filters__link-trigger Операционная система
+                        h3(href="#").basic-filters__link-trigger Операционная система
                         ul.accordeon__inner
                             li.accordeon__inner-item
-                                +checkbox('os', ['Android', 'iOS', 'Windows Mobile', 'Symbian', 'Custom'])
+                                +checkbox('os', ['Android', 'iOS', 'Windows-Mobile', 'Symbian', 'Custom'])
                             li.accordeon__inner-item
                                 a(href="#").reset-filter Сбросить фильтр
         main.content__main.main
+            include ../_common/mobilephones
+            +productItem(mobiles)
+            .content__pagination.pagination
+                a(href="#").pagination__link.pagination__link_prev
+                a(href="#").pagination__link.pagination__link_one.pagination__link_active 1
+                a(href="#").pagination__link.pagination__link_two 2
+                a(href="#").pagination__link.pagination__link_three 3
+                a(href="#").pagination__link.pagination__link_next
+
+
+
 
 

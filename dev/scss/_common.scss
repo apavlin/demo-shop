@@ -1,3 +1,5 @@
+@import "_mixins";
+
 html, body {
 	height: 100%;
 	width: 100%;
@@ -33,4 +35,5 @@ a {
 	width:1100px;
 	margin: 0 auto;
 	position: relative;
+	@include clearfix;
 	}
